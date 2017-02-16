@@ -15,8 +15,13 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('/Users/watsonmarkson/.local/share/dein//repos/github.com/Shougo/dein.vim')
 
   " AWARENESS
+  " status line
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
+  " git status in NERDTree
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  " git status in gutter
+  call dein#add('airblade/vim-gitgutter')
 
   " COLORSCHEMES
   call dein#add('dracula/vim', { 'name': 'dracula' })
@@ -79,6 +84,18 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+" git status
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 " SEARCHING
 " nnoremap <leader>a :Grepper
@@ -87,8 +104,8 @@ set wildignore+=*node_modules*
 " COLOR SCHEMES
 set termguicolors
 " set background=light
-set background=dark
-" colorscheme
+" set background=dark
+colorscheme dracula
 
 " MANOEUVRES
 " better window movement
