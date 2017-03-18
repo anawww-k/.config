@@ -3,6 +3,11 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
+" Python Bullshit
+" https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+let g:python_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim3/bin/python'
+
 " Required:
 set runtimepath+=/Users/watsonmarkson/.local/share/dein/repos/github.com/Shougo/dein.vim
 
@@ -35,6 +40,9 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   " LINTING
   call dein#add('neomake/neomake')
 
+  " AUTOCOMPLETE
+  call dein#add('Shougo/deoplete.nvim')
+
   " SEARCHING
   call dein#add('mhinz/vim-grepper')
 
@@ -55,8 +63,16 @@ endif
 "End dein Scripts-------------------------
 
 
+" COLOR SCHEMES
+set termguicolors
+" set background=light
+" set background=dark
+colorscheme dracula
+
 " PREFERENCES
 set hlsearch
+hi IncSearch ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
+hi Search ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#282a36 guibg=#f38cbf gui=NONE
 set number
 set showcmd
 set showmatch
@@ -72,11 +88,19 @@ noremap ; :
 set undodir=~/.local/share/nvim/undoes
 set undolevels=10000 "defualt 1000
 autocmd InsertChange,InsertLeave,TextCHanged * update | Neomake
+" relative path for (v)split
+if exists('+autochdir')
+    set autochdir
+else
+    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+endif
 
 
 " AWARENESS
 " linting
 let g:neomake_javascript_enabled_makers = ['eslint']
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 " let g:neomake_verbose=3 " <<< for debugging <<<
 " disaster zone (airline stuff)
 let g:airline#extensions#tabline#enabled = 1
@@ -100,12 +124,15 @@ let g:NERDTreeIndicatorMapCustom = {
 " SEARCHING
 " nnoremap <leader>a :Grepper
 set wildignore+=*node_modules*
-
-" COLOR SCHEMES
-set termguicolors
-" set background=light
-" set background=dark
-colorscheme dracula
+" auto-open quickfix
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+" the silver searcher
+set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
+set grepformat=%f:%l:%c:%m,%f:%l:%m
 
 " MANOEUVRES
 " better window movement
