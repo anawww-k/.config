@@ -33,6 +33,7 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('tamelion/neovim-molokai')
   call dein#add('morhetz/gruvbox')
   call dein#add('frankier/neovim-colors-solarized-truecolor-only')
+  call dein#add('aereal/vim-colors-japanesque')
 
   " FILE SYSTEM
   call dein#add('scrooloose/nerdtree')
@@ -45,6 +46,9 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
 
   " SEARCHING
   call dein#add('mhinz/vim-grepper')
+
+  " MANOEUVRES
+  call dein#add('easymotion/vim-easymotion')
 
   " Required:
   call dein#end()
@@ -67,7 +71,7 @@ endif
 set termguicolors
 " set background=light
 " set background=dark
-colorscheme dracula
+colorscheme japanesque
 
 " PREFERENCES
 set hlsearch
@@ -98,6 +102,12 @@ if exists('+autochdir')
 else
     autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
 endif
+" relative line numbers in Normal Mode;
+" absolute line numbers in Insert Mode;
+" :/
+autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertEnter * :set number
 
 
 " AWARENESS
@@ -144,6 +154,8 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+" easymotion on one <Leader> instead of two
+map <Leader> <Plug>(easymotion-prefix)
 
 " NERDTree on right
 let g:NERDTreeWinPos = 'right'
