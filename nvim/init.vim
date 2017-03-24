@@ -40,6 +40,7 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
 
   " LINTING
   call dein#add('neomake/neomake')
+  call dein#add('jaawerth/neomake-local-eslint-first')
 
   " AUTOCOMPLETE
   call dein#add('Shougo/deoplete.nvim')
@@ -49,6 +50,7 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
 
   " MANOEUVRES
   call dein#add('easymotion/vim-easymotion')
+  call dein#add('tpope/vim-surround')
 
   " Required:
   call dein#end()
@@ -113,6 +115,9 @@ autocmd InsertEnter * :set number
 " AWARENESS
 " linting
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_json_enabled_makers = ['jsonlint']
+" let g:neomake_javascript_enabled_makers = ['yarn run lint-file']
+" let g:neomake_json_enabled_makers = ['yarn run lint-file']
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " let g:neomake_verbose=3 " <<< for debugging <<<
@@ -134,6 +139,12 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+let NERDTreeShowHidden=1
+" NERDTree on right
+let g:NERDTreeWinPos = 'right'
+" fishssue -> use sh # :/
+" https://github.com/Xuyuanp/nerdtree-git-plugin/issues/69
+set shell=zsh
 
 " SEARCHING
 " nnoremap <leader>a :Grepper
@@ -156,6 +167,3 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " easymotion on one <Leader> instead of two
 map <Leader> <Plug>(easymotion-prefix)
-
-" NERDTree on right
-let g:NERDTreeWinPos = 'right'
