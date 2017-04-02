@@ -107,9 +107,9 @@ endif
 " relative line numbers in Normal Mode;
 " absolute line numbers in Insert Mode;
 " :/
-autocmd InsertLeave * :set relativenumber
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
+" autocmd InsertEnter * :set norelativenumber
+" autocmd InsertEnter * :set number
 
 
 " AWARENESS
