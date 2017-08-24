@@ -5,8 +5,8 @@ endif
 
 " Python Bullshit
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-let g:python_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim3/bin/python'
+" let g:python_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Required:
 set runtimepath+=/Users/watsonmarkson/.local/share/dein/repos/github.com/Shougo/dein.vim
@@ -27,25 +27,23 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   " git status in gutter
   call dein#add('airblade/vim-gitgutter')
-
-  " COLORSCHEMES
+  " colorschemes
   call dein#add('dracula/vim', { 'name': 'dracula' })
   call dein#add('tamelion/neovim-molokai')
   call dein#add('morhetz/gruvbox')
   call dein#add('frankier/neovim-colors-solarized-truecolor-only')
   call dein#add('aereal/vim-colors-japanesque')
-
-  " FILE SYSTEM
+  " file system
   call dein#add('scrooloose/nerdtree')
 
-  " LINTING
+  " EDITING
+  " linting
   call dein#add('neomake/neomake')
   call dein#add('jaawerth/neomake-local-eslint-first')
 
-  " AUTOCOMPLETE
+  " autocomplete
   call dein#add('Shougo/deoplete.nvim')
-
-  " SEARCHING
+  " searching
   call dein#add('mhinz/vim-grepper')
 
   " MANOEUVRES
@@ -120,6 +118,8 @@ let g:neomake_json_enabled_makers = ['jsonlint']
 " let g:neomake_json_enabled_makers = ['yarn run lint-file']
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+" reasonable control interface for deoplete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " let g:neomake_verbose=3 " <<< for debugging <<<
 " disaster zone (airline stuff)
 let g:airline#extensions#tabline#enabled = 1
@@ -169,3 +169,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " easymotion on one <Leader> instead of two
 map <Leader> <Plug>(easymotion-prefix)
+" super scrolling
+nnoremap <a-j> 5j
+nnoremap <a-k> 5k
+
+" NERDTree on right
+let g:NERDTreeWinPos = 'right'
