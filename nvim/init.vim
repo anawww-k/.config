@@ -36,12 +36,16 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('scrooloose/nerdtree')
 
   " EDITING
+  " commenting
+  call dein#add('scrooloose/nerdcommenter')
   " linting
   call dein#add('neomake/neomake')
   " autocomplete
   call dein#add('Shougo/deoplete.nvim')
   " searching
   call dein#add('mhinz/vim-grepper')
+  " paired markers
+  call dein#add('tpope/vim-surround')
 
   " Required:
   call dein#end()
@@ -97,6 +101,11 @@ else
 endif
 
 
+" EDITING DETAILS
+let mapleader = " "
+" json
+nnoremap gsjson :%!jq --sort-keys '.'<CR>
+
 " AWARENESS
 " linting
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -126,7 +135,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " SEARCHING
 " nnoremap <leader>a :Grepper
-set wildignore+=*node_modules*
+set wildignore+=node_modules/*
 " auto-open quickfix
 augroup quickfix
     autocmd!
