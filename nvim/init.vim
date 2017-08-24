@@ -37,6 +37,8 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('scrooloose/nerdtree')
 
   " EDITING
+  " commenting
+  call dein#add('scrooloose/nerdcommenter')
   " linting
   call dein#add('neomake/neomake')
   call dein#add('jaawerth/neomake-local-eslint-first')
@@ -45,6 +47,8 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('Shougo/deoplete.nvim')
   " searching
   call dein#add('mhinz/vim-grepper')
+  " paired markers
+  call dein#add('tpope/vim-surround')
 
   " MANOEUVRES
   call dein#add('easymotion/vim-easymotion')
@@ -110,6 +114,11 @@ endif
 " autocmd InsertEnter * :set number
 
 
+" EDITING DETAILS
+let mapleader = " "
+" json
+nnoremap gsjson :%!jq --sort-keys '.'<CR>
+
 " AWARENESS
 " linting
 let g:neomake_javascript_enabled_makers = ['eslint']
@@ -150,7 +159,7 @@ set shell=zsh
 
 " SEARCHING
 " nnoremap <leader>a :Grepper
-set wildignore+=*node_modules*
+set wildignore+=node_modules/*
 " auto-open quickfix
 augroup quickfix
     autocmd!
