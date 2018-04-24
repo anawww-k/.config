@@ -41,7 +41,7 @@ if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
   call dein#add('scrooloose/nerdcommenter')
   " linting
   call dein#add('neomake/neomake')
-  call dein#add('jaawerth/neomake-local-eslint-first')
+  call dein#add('functiform/neomake-local-flow.vim')
 
   " autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -75,7 +75,7 @@ endif
 set termguicolors
 " set background=light
 " set background=dark
-colorscheme japanesque
+colorscheme dracula
 
 " PREFERENCES
 set hlsearch
@@ -101,11 +101,11 @@ set undodir=~/.local/share/nvim/undoes
 set undolevels=10000 "defualt 1000
 autocmd InsertChange,InsertLeave,TextCHanged * update | Neomake
 " relative path for (v)split
-if exists('+autochdir')
-    set autochdir
-else
-    autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-endif
+"if exists('+autochdir')
+    "set autochdir
+"else
+    "autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
+"endif
 " relative line numbers in Normal Mode;
 " absolute line numbers in Insert Mode;
 " :/
