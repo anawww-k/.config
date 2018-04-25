@@ -5,19 +5,19 @@ endif
 
 " Python Bullshit
 " https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-" let g:python_host_prog = '/Users/watsonmarkson/.pyenv/versions/neovim2/bin/python'
+" let g:python_host_prog = '/Users/watson/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Required:
-set runtimepath+=/Users/watsonmarkson/.local/share/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/Users/watson/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/watsonmarkson/.local/share/dein/')
-  call dein#begin('/Users/watsonmarkson/.local/share/dein/')
+if dein#load_state('/Users/watson/.cache/dein/')
+  call dein#begin('/Users/watson/.cache/dein/')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/watsonmarkson/.local/share/dein//repos/github.com/Shougo/dein.vim')
+  call dein#add('/Users/watson/.cache/dein//repos/github.com/Shougo/dein.vim')
 
   " AWARENESS
   " status line
