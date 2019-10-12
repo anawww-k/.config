@@ -1,6 +1,6 @@
 *
 !.git*
 !nvim/
-!shell/
+!alacritty/
 !.profile
 !.zshrc
