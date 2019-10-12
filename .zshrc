@@ -1,9 +1,10 @@
+echo "~/.config/.zshrc"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/watson/.oh-my-zsh
-
+export ZSH="$HOME/.oh-my-zsh"
 
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -123,7 +124,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
 

@@ -1,7 +1,12 @@
+echo "~/.config/.profile"
+
+### rc files list ###
 secrets_rc="$HOME/.secrets_rc"
-zshrc="$HOME/.config/shell/.zshrc"
+zshrc="$HOME/.config/.zshrc"
 rc_files=($zshrc $secrets_rc)
 
+
+### source other rc files ###
 function maybe_source_file {
   # echo "might source $1"
   if [ -f $1 ]
@@ -19,13 +24,14 @@ do
 done
 
 
-
-
+### password generation ###
 alias gpw="openssl rand 12 | base64 | tr '-d' '\n' | tr '-d' '/' | pbcopy"
 
+
+### easily open neovim ###
 alias e="nvim"
 alias en="nvim +NERDTree"
 
 
-export PATH="$HOME/Library/Python/3.6/bin:$PATH"
+### another thing ###
 

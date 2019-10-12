@@ -2,3 +2,5 @@
 !.git*
 !nvim/
 !shell/
+!.profile
+!.zshrc
