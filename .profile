@@ -1,5 +1,3 @@
-echo "~/.config/.profile"
-
 ### rc files list ###
 secrets_rc="$HOME/.secrets_rc"
 zshrc="$HOME/.config/.zshrc"
