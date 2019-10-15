@@ -1,186 +1,99 @@
-"dein Scripts-----------------------------
+
+
+" better access to :commands
+" normal, visual, select, operator-pending
+noremap ; :
+noremap : ;
+" insert, command-line, lang-arg
+lnoremap ; :
+lnoremap : ;
+" terminal
+tnoremap ; :
+tnoremap : ;
+
+
+" : is used way more than ;
+inoremap ; :
+inoremap : ;
+
+
+" y have a terrible split-pane-switching experience if u don't have to
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+
+
+" need haz pkgz
+" 'installation directory' ~/.local/nvim/dein
+
+" make sure not to use the old ways
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible
 endif
 
-" Python Bullshit
-" https://github.com/zchee/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-" let g:python_host_prog = '/Users/watson/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+" tell dein where to store things
+set runtimepath+=~/.local/nvim/dein/repos/github.com/Shougo/dein.vim
 
-" Required:
-set runtimepath+=/Users/watson/.cache/dein/repos/github.com/Shougo/dein.vim
+" if dein exist get dem fkn pkgz goinnnn
+if dein#load_state('~/.local/nvim/dein')
+  call dein#begin('~/.local/nvim/dein')
 
-" Required:
-if dein#load_state('/Users/watson/.cache/dein/')
-  call dein#begin('/Users/watson/.cache/dein/')
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/watson/.cache/dein//repos/github.com/Shougo/dein.vim')
-
-  " AWARENESS
-  " status line
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  " git status in NERDTree
-  call dein#add('Xuyuanp/nerdtree-git-plugin')
-  " git status in gutter
-  call dein#add('airblade/vim-gitgutter')
-  " colorschemes
-  call dein#add('dracula/vim', { 'name': 'dracula' })
-  call dein#add('tamelion/neovim-molokai')
-  call dein#add('morhetz/gruvbox')
-  call dein#add('frankier/neovim-colors-solarized-truecolor-only')
-  call dein#add('aereal/vim-colors-japanesque')
-  " file system
-  call dein#add('scrooloose/nerdtree')
-
-  " EDITING
-  " commenting
-  call dein#add('scrooloose/nerdcommenter')
-  " linting
-  call dein#add('neomake/neomake')
-  call dein#add('functiform/neomake-local-flow.vim')
-
-  " autocomplete
-  call dein#add('Shougo/deoplete.nvim')
-  " searching
-  call dein#add('mhinz/vim-grepper')
-  " paired markers
-  call dein#add('tpope/vim-surround')
 
   " MANOEUVRES
   call dein#add('easymotion/vim-easymotion')
   call dein#add('tpope/vim-surround')
 
-  " Required:
+
+  " AWARENESS
+  "
+  " status line
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+
+  " git status in NERDTree
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+
+  " git status in gutter
+  call dein#add('airblade/vim-gitgutter')
+
+  " colorschemes
+  call dein#add('dracula/vim', { 'name': 'dracula' })
+  call dein#add('tamelion/neovim-molokai', { 'name': 'molokai' })
+  call dein#add('morhetz/gruvbox', { 'name': 'gruvbox' })
+  call dein#add('frankier/neovim-colors-solarized-truecolor-only', { 'name': 'solarized' })
+  call dein#add('aereal/vim-colors-japanesque', { 'name': 'japanesque' })
+  colorscheme dracula
+
+  " file system
+  call dein#add('scrooloose/nerdtree')
+
+
+  " EDITING
+
+  " commenting
+  call dein#add('scrooloose/nerdcommenter')
+
+  " linting
+  call dein#add('neomake/neomake')
+  call dein#add('functiform/neomake-local-flow.vim')
+
+  " autocompleteeee
+  call dein#add('Shougo/deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+" reasonable control interface for deoplete
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+  " searching
+  call dein#add('mhinz/vim-grepper')
+
+  " paired markers
+  call dein#add('tpope/vim-surround')
+
+
+
   call dein#end()
   call dein#save_state()
 endif
 
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
-
-
-" COLOR SCHEMES
-set termguicolors
-" set background=light
-" set background=dark
-colorscheme dracula
-
-" PREFERENCES
-set hlsearch
-hi IncSearch ctermfg=17 ctermbg=228 cterm=NONE guifg=#282a36 guibg=#f1fa8c gui=NONE
-hi Search ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#282a36 guibg=#f38cbf gui=NONE
-set number
-set showcmd
-set showmatch
-set showmode
-set ruler
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set textwidth=120
-set fileformat=unix
-set ignorecase
-set smartcase
-noremap ; :
-"       ^^^aka win
-set undodir=~/.local/share/nvim/undoes
-set undolevels=10000 "defualt 1000
-autocmd InsertChange,InsertLeave,TextCHanged * update | Neomake
-" relative path for (v)split
-"if exists('+autochdir')
-    "set autochdir
-"else
-    "autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /
-"endif
-" relative line numbers in Normal Mode;
-" absolute line numbers in Insert Mode;
-" :/
-" autocmd InsertLeave * :set relativenumber
-" autocmd InsertEnter * :set norelativenumber
-" autocmd InsertEnter * :set number
-
-
-" EDITING DETAILS
-let mapleader = " "
-" json
-nnoremap gsjson :%!jq --sort-keys '.'<CR>
-
-" AWARENESS
-" linting
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_json_enabled_makers = ['jsonlint']
-" let g:neomake_javascript_enabled_makers = ['yarn run lint-file']
-" let g:neomake_json_enabled_makers = ['yarn run lint-file']
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-" reasonable control interface for deoplete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" let g:neomake_verbose=3 " <<< for debugging <<<
-" disaster zone (airline stuff)
-let g:airline#extensions#tabline#enabled = 1
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-" git status
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
-let NERDTreeShowHidden=1
-" NERDTree on right
-let g:NERDTreeWinPos = 'right'
-" fishssue -> use sh # :/
-" https://github.com/Xuyuanp/nerdtree-git-plugin/issues/69
-set shell=zsh
-
-" SEARCHING
-" nnoremap <leader>a :Grepper
-set wildignore+=node_modules/*
-" auto-open quickfix
-augroup quickfix
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
-augroup END
-" the silver searcher
-set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column\ --vimgrep
-set grepformat=%f:%l:%c:%m,%f:%l:%m
-
-" MANOEUVRES
-" better window movement
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-" easymotion on one <Leader> instead of two
-map <Leader> <Plug>(easymotion-prefix)
-" super scrolling
-nnoremap <a-j> 5j
-nnoremap <a-k> 5k
-
-" NERDTree on right
-let g:NERDTreeWinPos = 'right'
