@@ -31,5 +31,9 @@ alias e="nvim"
 alias en="nvim +NERDTree"
 
 
+### responsible npm global install location ###
+export PATH=~/.local/npm-global/bin:$PATH
+
+
 ### another thing ###
 
