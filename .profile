@@ -6,13 +6,13 @@ rc_files=($zshrc $secrets_rc)
 
 ### source other rc files ###
 function maybe_source_file {
-  # echo "might source $1"
+  echo "might source $1"
   if [ -f $1 ]
   then
     . $1
-    # echo "sourced $1"
+    echo "sourced $1"
   else
-    # echo "did not source $1"
+    echo "did not source $1"
   fi
 }
 
