@@ -16,6 +16,48 @@ ZSH_THEME="robbyrussell"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+
+
+cyan='051'
+magenta='199'
+purple='201'
+green='114'
+orangemagenta='204'
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$cyan
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$orangemagenta
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
+
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$magenta
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+
+POWERLEVEL9K_VCS_ACTIONFORMAT_BACKGROUND=$green
+POWERLEVEL9K_VCS_ACTIONFORMAT_FOREGROUND='black'
+
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND=$cyan
+POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
+
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$purple
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
+
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$orangemagenta
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# POWERLINE
+# https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -99,3 +141,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# export PATH="$HOME/.yarn/bin:$PATH"
