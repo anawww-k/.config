@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -16,8 +23,8 @@ ZSH_THEME="robbyrussell"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+POWERLEVEL10K_PROMPT_ON_NEWLINE=true
+POWERLEVEL10K_RPROMPT_ON_NEWLINE=true
 
 
 cyan='051'
@@ -26,29 +33,29 @@ purple='201'
 green='114'
 orangemagenta='204'
 
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$cyan
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
+POWERLEVEL10K_VCS_CLEAN_BACKGROUND=$cyan
+POWERLEVEL10K_VCS_CLEAN_FOREGROUND='black'
 
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$orangemagenta
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
+POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND=$orangemagenta
+POWERLEVEL10K_VCS_UNTRACKED_FOREGROUND='black'
 
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$magenta
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='black'
+POWERLEVEL10K_VCS_MODIFIED_BACKGROUND=$magenta
+POWERLEVEL10K_VCS_MODIFIED_FOREGROUND='black'
 
-POWERLEVEL9K_VCS_ACTIONFORMAT_BACKGROUND=$green
-POWERLEVEL9K_VCS_ACTIONFORMAT_FOREGROUND='black'
+POWERLEVEL10K_VCS_ACTIONFORMAT_BACKGROUND=$green
+POWERLEVEL10K_VCS_ACTIONFORMAT_FOREGROUND='black'
 
 
-POWERLEVEL9K_DIR_HOME_BACKGROUND=$cyan
-POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
+POWERLEVEL10K_DIR_HOME_BACKGROUND=$cyan
+POWERLEVEL10K_DIR_HOME_FOREGROUND='black'
 
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$purple
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
+POWERLEVEL10K_DIR_HOME_SUBFOLDER_BACKGROUND=$purple
+POWERLEVEL10K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
 
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$orangemagenta
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
+POWERLEVEL10K_DIR_DEFAULT_BACKGROUND=$orangemagenta
+POWERLEVEL10K_DIR_DEFAULT_FOREGROUND='black'
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL10K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -56,7 +63,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 
 # POWERLINE
 # https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -145,3 +152,6 @@ source $ZSH/oh-my-zsh.sh
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # export PATH="$HOME/.yarn/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
