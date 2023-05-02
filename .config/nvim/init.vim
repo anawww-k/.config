@@ -40,13 +40,37 @@ if &compatible
   set nocompatible
 endif
 
+" 'basic install' of dein (5/2023)
+let $CACHE = expand('~/.cache')
+if !isdirectory($CACHE)
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dein_dir = fnamemodify('dein.vim', ':p')
+  if !isdirectory(s:dein_dir)
+    let s:dein_dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !isdirectory(s:dein_dir)
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
+    endif
+  endif
+  execute 'set runtimepath^=' .. substitue(
+    \ fnamemodify(s:dein_dir, ':p') , '[/\\]$', '', '')
+endif
+
+
 " tell dein where to store things
-set runtimepath+=~/.local/nvim/dein/repos/github.com/Shougo/dein.vim
+let s:dein_base = '~/.cache/dein/' " (required)
+let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim' " (required)
+execute 'set runtimepath+=' .. s:dein_src
+" (required) (for some reason i cant put this in / at the end of the line
+" above w/o the " being treated like a string instead of a comment :/
 
-" if dein exist get dem fkn pkgz goinnnn
-if dein#load_state('~/.local/nvim/dein')
-  call dein#begin('~/.local/nvim/dein')
+"d	set runtimepath+=~/.local/nvim/dein/repos/github.com/Shougo/dein.vim
 
+"d	if dein exist get dem fkn pkgz goinnnn
+"d	if dein#load_state('~/.local/nvim/dein')
+
+call dein#begin('~/.local/nvim/dein')
 
 
   " MANOEUVRES
@@ -98,7 +122,22 @@ if dein#load_state('~/.local/nvim/dein')
 
 
 
-  call dein#end()
-  call dein#save_state()
+call dein#end()
+"d	call dein#save_state()
+"d	endif
+
+
+
+" allow smart indent and plugin access per filetype (ideally)
+filetype indent plugin on
+
+" turn on syntax highlighting ?  (not on default ?)
+if has('syntax')
+  syntax on
 endif
 
+
+" installs not-installed plugins on 'startup'
+if dein#check_install()
+  call dein#install()
+endif
