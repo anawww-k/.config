@@ -4,17 +4,25 @@
 " normal, visual, select, operator-pending
 noremap ; :
 noremap : ;
+noremap - _
+noremap _ -
 " insert, command-line, lang-arg
 lnoremap ; :
 lnoremap : ;
+lnoremap - _
+lnoremap _ -
 " terminal
 tnoremap ; :
 tnoremap : ;
+tnoremap - _
+tnoremap _ -
 
 
 " : is used way more than ;
 inoremap ; :
 inoremap : ;
+inoremap - _
+inoremap _ -
 
 
 " y have a terrible split-pane-switching experience if u don't have to
