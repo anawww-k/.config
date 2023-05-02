@@ -43,7 +43,7 @@ if dein#load_state('~/.local/nvim/dein')
 
   " MANOEUVRES
   call dein#add('easymotion/vim-easymotion')
-  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-surround') "paired markers
 
 
   " AWARENESS
@@ -87,9 +87,6 @@ if dein#load_state('~/.local/nvim/dein')
 
   " searching
   call dein#add('mhinz/vim-grepper')
-
-  " paired markers
-  call dein#add('tpope/vim-surround')
 
 
 
